@@ -24,39 +24,43 @@ const Cart = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8 text-secondary-900">Carrito de Compras</h1>
+        <div className="container mx-auto px-4 py-6 md:py-8">
+            <h1 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-secondary-900">Carrito de Compras</h1>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                 {/* Cart Items */}
-                <div className="lg:col-span-2 space-y-4">
+                <div className="lg:col-span-2 space-y-3 md:space-y-4">
                     {cart.map((item) => (
-                        <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex gap-4 items-center">
-                            <img src={item.image} alt={item.name} className="w-24 h-24 object-cover rounded-lg bg-gray-50" />
-                            <div className="flex-grow">
-                                <h3 className="font-bold text-gray-900">{item.name}</h3>
-                                <p className="text-sm text-gray-500 mb-2">{item.category}</p>
-                                <div className="font-bold text-primary-600">${item.price}</div>
+                        <div key={item.id} className="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 flex gap-3 md:gap-4 items-center">
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-16 h-16 md:w-24 md:h-24 object-cover rounded-lg bg-gray-50 flex-shrink-0"
+                            />
+                            <div className="flex-grow min-w-0">
+                                <h3 className="font-bold text-gray-900 text-sm md:text-base truncate">{item.name}</h3>
+                                <p className="text-xs md:text-sm text-gray-500 mb-1">{item.category}</p>
+                                <div className="font-bold text-primary-600 text-sm md:text-base">${item.price}</div>
                             </div>
-                            <div className="flex flex-col items-end gap-2">
+                            <div className="flex flex-col items-end gap-2 flex-shrink-0">
                                 <div className="flex items-center border border-gray-200 rounded-lg">
                                     <button
                                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                        className="p-2 hover:bg-gray-100 transition-colors"
+                                        className="p-1.5 md:p-2 hover:bg-gray-100 transition-colors text-sm font-bold"
                                     >
                                         -
                                     </button>
-                                    <span className="w-8 text-center font-medium">{item.quantity}</span>
+                                    <span className="w-7 md:w-8 text-center font-medium text-sm">{item.quantity}</span>
                                     <button
                                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                        className="p-2 hover:bg-gray-100 transition-colors"
+                                        className="p-1.5 md:p-2 hover:bg-gray-100 transition-colors text-sm font-bold"
                                     >
                                         +
                                     </button>
                                 </div>
                                 <button
                                     onClick={() => removeFromCart(item.id)}
-                                    className="text-red-500 text-sm hover:underline"
+                                    className="text-red-500 text-xs md:text-sm hover:underline"
                                 >
                                     Eliminar
                                 </button>
@@ -73,7 +77,7 @@ const Cart = () => {
                 </div>
 
                 {/* Order Summary */}
-                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 h-fit">
+                <div className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-gray-100 h-fit">
                     <h2 className="text-xl font-bold mb-6 text-gray-900">Resumen del Pedido</h2>
                     <div className="space-y-4 mb-6 border-b border-gray-100 pb-6">
                         <div className="flex justify-between text-gray-600">

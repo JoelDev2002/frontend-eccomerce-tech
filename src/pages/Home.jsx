@@ -28,7 +28,7 @@ const Home = () => {
 
             {/* Hero Section */}
             <section
-                className="relative text-white h-[400px] lg:h-[517px] bg-cover bg-center bg-no-repeat "
+                className="relative text-white h-[280px] sm:h-[380px] lg:h-[517px] bg-cover bg-center bg-no-repeat"
                 style={{
                     backgroundImage: `url('./banner-apple.webp')`,
                 }}
@@ -38,7 +38,7 @@ const Home = () => {
 
                 <Link
                     to="/shop"
-                    className="absolute left-1/2 -translate-x-1/2 bottom-10 text-center inline-block bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-orange-500/30 "
+                    className="absolute left-1/2 -translate-x-1/2 bottom-8 text-center inline-block bg-orange-600 hover:bg-orange-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-orange-500/30"
                 >
                     Ver Catálogo
                 </Link>
@@ -46,16 +46,16 @@ const Home = () => {
             <CategoryNav />
 
             {/* Featured Products */}
-            <section className="container mx-auto px-4 py-16">
-                <div className="flex justify-between items-end mb-12">
-                    <h2 className="text-3xl font-bold text-secondary-900">Productos Destacados</h2>
+            <section className="container mx-auto px-4 py-10 md:py-16">
+                <div className="flex justify-between items-end mb-8 md:mb-12">
+                    <h2 className="text-2xl md:text-3xl font-bold text-secondary-900">Productos Destacados</h2>
                     <Link to="/shop" className="text-primary-600 hover:text-primary-700 font-semibold flex items-center">
                         Ver todos <span className="ml-1">→</span>
                     </Link>
                 </div>
 
                 {loading ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
                         {[...Array(4)].map((_, i) => (
                             <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 h-96 animate-pulse">
                                 <div className="h-48 bg-gray-200 rounded-t-xl"></div>
@@ -68,7 +68,7 @@ const Home = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
                         {products.map(product => (
                             <ProductCard key={product.id} product={product} />
                         ))}

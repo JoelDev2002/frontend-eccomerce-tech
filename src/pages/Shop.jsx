@@ -34,9 +34,9 @@ const Shop = () => {
         <div>
 
             <CategoryNav />
-            <div className="container mx-auto px-4 py-8">
-                <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-secondary-900 mb-4">
+            <div className="container mx-auto px-4 py-6 md:py-8">
+                <div className="mb-6 md:mb-8">
+                    <h1 className="text-2xl md:text-3xl font-bold text-secondary-900 mb-2 md:mb-4">
                         {categoryId ? `Categoría: ${products[0]?.category || 'Cargando...'}` : 'Catálogo Completo'}
                     </h1>
                     <p className="text-gray-600">Explora nuestra selección de los mejores dispositivos móviles.</p>
@@ -47,7 +47,7 @@ const Shop = () => {
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
                         {products.map(product => (
                             <ProductCard key={product.id} product={product} />
                         ))}

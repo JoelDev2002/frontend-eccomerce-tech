@@ -4,29 +4,53 @@ import { useState } from 'react';
 
 const ProductCard = ({ product }) => {
     const { addToCart } = useCart();
-    const [active, setActive] = useState(false)
-    return (
-        <div class=" flex  flex-col gap-1 rounded-2xl px-3 py-3 shadow-xl border border-gray-100 bg-white hover:scale-[1.01] transition duration-500">
-            <header class="relative  rounded-xl w-full h-64 ">
-                <div class="absolute top-2 right-2 z-10 cursor-pointer rounded-full bg-white p-1 shadow-md">
-                    <Heart className={active ? 'fill-red-600 stroke-red-600' : ''} onClick={() => setActive(!active)} />
-                </div>
-                <img src={product.image} alt={product.name} class=" w-ful h-full  object-cover rounded-xl" />
-            </header>
-            <footer class="flex flex-col gap-1">
-                <h3 class="text-purple-900 uppercase text-xs font-semibold tracking-wider">
-                    {product.category}
-                </h3>
-                <p class="font-bold">{product.name}</p>
-                <p class="text-gray-500 text-sm mb-4 flex-grow line-clamp-2">{product.description}</p>
-                <span class="font-semibold text-black/70">S/ {product.price}</span>
-            </footer>
-            <button onClick={() => addToCart(product)} class="rounded-3xl bg-black px-2 py-3 text-white flex items-center justify-center gap-2">
-                <ShoppingBag />
-                <span>Agregar</span>
-            </button>
-        </div>
+    const [active, setActive] = useState(false);
 
+    return (
+        <div className="flex flex-col rounded-2xl shadow-md border border-gray-100 bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+
+            {/* Imagen */}
+            <div className="relative w-full h-32 sm:h-44 lg:h-48 bg-white overflow-hidden">
+                <button
+                    onClick={() => setActive(!active)}
+                    className="absolute top-2 right-2 z-10 rounded-full bg-white/90 backdrop-blur-sm p-1.5 shadow hover:scale-110 transition-transform"
+                >
+                    <Heart
+                        size={15}
+                        className={active ? 'fill-red-500 stroke-red-500' : 'stroke-gray-400'}
+                    />
+                </button>
+                <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
+                />
+            </div>
+
+            {/* Info */}
+            <div className="flex flex-col gap-0.5 px-2.5 pt-2 pb-1 sm:px-3 sm:pt-3 flex-grow">
+                <span className="text-purple-700 uppercase text-[10px] sm:text-xs font-bold tracking-wider truncate">
+                    {product.category}
+                </span>
+                <p className="font-semibold text-gray-900 text-xs sm:text-sm leading-snug line-clamp-2">
+                    {product.name}
+                </p>
+                <p className="font-bold text-gray-800 text-sm sm:text-base mt-0.5">
+                    S/ {product.price}
+                </p>
+            </div>
+
+            {/* Botón */}
+            <div className="px-2.5 pb-2.5 pt-1.5 sm:px-3 sm:pb-3">
+                <button
+                    onClick={() => addToCart(product)}
+                    className="w-full rounded-xl bg-black hover:bg-gray-800 active:scale-95 px-2 py-2 sm:py-2.5 text-white flex items-center justify-center gap-1.5 text-xs sm:text-sm font-medium transition-all duration-200"
+                >
+                    <ShoppingBag size={15} />
+                    <span>Agregar</span>
+                </button>
+            </div>
+        </div>
     );
 };
 
